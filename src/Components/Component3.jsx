@@ -25,7 +25,10 @@ const Component3 = () => {
 
   const addDataButton = (e) => {
     e.preventDefault();
-
+    if (componentData.trim() === "") {
+      toast.error("Please enter a valid value");
+      return;
+    }
     const data = {
       component3: componentData,
     };
@@ -69,6 +72,7 @@ const Component3 = () => {
         onChange={(e) => setComponentData(e.target.value)}
         className="input"
         placeholder="Component 3 Data"
+        required
       />
       <button className="btn" onClick={addDataButton}>
         Add Data

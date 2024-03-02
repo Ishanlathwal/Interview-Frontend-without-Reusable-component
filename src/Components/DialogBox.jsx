@@ -23,7 +23,7 @@ const DialogBox = ({ open, submitReviewToggle, componentName, id }) => {
       isLoading: c1Isloading,
       isError: c1IsError,
       error: c1Error,
-    }, 
+    },
   ] = useUpdateComponent1DataMutation();
   const [
     update2,
@@ -76,6 +76,10 @@ const DialogBox = ({ open, submitReviewToggle, componentName, id }) => {
 
   const submit = (e) => {
     e.preventDefault();
+    if (data.trim() === "") {
+      toast.error("Please enter a valid value");
+      return;
+    }
     if (componentName === "component1") {
       const dataUpdate = {
         component1: data,
@@ -117,6 +121,7 @@ const DialogBox = ({ open, submitReviewToggle, componentName, id }) => {
             onChange={(e) => setData(e.target.value)}
             value={data}
             placeholder="Update Data"
+            required
           />
         </DialogContent>
         <DialogActions>

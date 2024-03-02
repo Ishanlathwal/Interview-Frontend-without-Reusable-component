@@ -1,12 +1,15 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
+// Using Rtk query to fetch data
 export const Api = createApi({
+  // base Url
   baseQuery: fetchBaseQuery({
     baseUrl: "https://interview-backend-gq8s.onrender.com/api/v1/",
   }),
   reducerPath: "api",
 
   endpoints: (build) => ({
+    // Compnent 1 Endpoints
     getcomponent1Data: build.query({
       query: () => `component1`,
       providesTags: ["component1"],
@@ -28,7 +31,7 @@ export const Api = createApi({
       invalidatesTags: ["component1"],
     }),
 
-    // For Second component
+    // Compnent 2 Endpoints
 
     getcomponent2Data: build.query({
       query: () => `component2`,
@@ -51,7 +54,7 @@ export const Api = createApi({
       invalidatesTags: ["component2"],
     }),
 
-    // For third Component
+    // Compnent 3 Endpoints
 
     getcomponent3Data: build.query({
       query: () => `component3`,
@@ -73,7 +76,7 @@ export const Api = createApi({
       }),
       invalidatesTags: ["component3"],
     }),
-    // For Counts
+    // For Api hit Counts
     getcomponent1Counts: build.query({
       query: () => `hitcounts`,
       providesTags: ["component1"],

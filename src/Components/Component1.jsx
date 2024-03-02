@@ -9,20 +9,27 @@ import { toast } from "react-toastify";
 import DialogBox from "./DialogBox";
 
 const Component1 = () => {
+  // Get component 1 data
   const { data, isLoading, isError, error } = useGetcomponent1DataQuery();
   const { component1 = [] } = data || [];
 
+  // Create component 1 data
   const [addData, { isSuccess }] = useCreateComponent1DataMutation();
 
+  // Get api Hitcount for component 1
   const { data: countData } = useGetcomponent1CountsQuery();
   const { updateData1HitCount = 0, createData1HitCount = 0 } = countData || {};
 
+  // States
   const [componentData, setComponentData] = useState("");
   const [open, setOpen] = useState(false);
+
+  // Update dialog open/close function
   const submitReviewToggle = () => {
     open ? setOpen(false) : setOpen(true);
   };
 
+  // Save data function
   const addDataButton = (e) => {
     e.preventDefault();
     if (componentData.trim() === "") {
@@ -37,6 +44,7 @@ const Component1 = () => {
     setComponentData("");
   };
 
+  // Use effects for toast
   useEffect(() => {
     if (isError) {
       toast.error(error?.data?.message);
@@ -46,6 +54,7 @@ const Component1 = () => {
     }
   }, [error?.data?.message, isError, isSuccess]);
 
+  // Loader component
   if (isLoading) return <Loader />;
   return (
     <>

@@ -1,3 +1,5 @@
+// Layout options object to pass in Responsive grid layout in App.jsx
+
 export const layouts = {
   lg: [
     { i: "a", x: 0, y: 0, w: 6, h: 8 }, // Single component on large screens

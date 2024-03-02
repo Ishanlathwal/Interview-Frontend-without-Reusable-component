@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import {
   Button,
   Dialog,
@@ -14,8 +15,9 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import Loader from "../Loader/Loader";
 
-// eslint-disable-next-line react/prop-types
+// Reusable dialog box component
 const DialogBox = ({ open, submitReviewToggle, componentName, id }) => {
+  // Update end point for component 1
   const [
     update,
     {
@@ -25,6 +27,8 @@ const DialogBox = ({ open, submitReviewToggle, componentName, id }) => {
       error: c1Error,
     },
   ] = useUpdateComponent1DataMutation();
+
+  // Update end point for component 2
   const [
     update2,
     {
@@ -35,6 +39,7 @@ const DialogBox = ({ open, submitReviewToggle, componentName, id }) => {
     },
   ] = useUpdateComponent2DataMutation();
 
+  // Update end point for component 3
   const [
     update3,
     {
@@ -46,6 +51,8 @@ const DialogBox = ({ open, submitReviewToggle, componentName, id }) => {
   ] = useUpdateComponent3DataMutation();
 
   const [data, setData] = useState("");
+
+  // Use effects for toasts
 
   useEffect(() => {
     if (c1IsError) {
@@ -72,8 +79,7 @@ const DialogBox = ({ open, submitReviewToggle, componentName, id }) => {
     c3Success,
   ]);
 
-  //////////////////
-
+  // Submit data handler for all 3 components. Save data based on component name condition
   const submit = (e) => {
     e.preventDefault();
     if (data.trim() === "") {

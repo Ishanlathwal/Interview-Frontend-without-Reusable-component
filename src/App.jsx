@@ -11,6 +11,8 @@ const ResponsiveGridLayout = WidthProvider(Responsive);
 
 function App() {
   return (
+    // UsedReact grid-layout library
+
     <ResponsiveGridLayout
       className="layout"
       layouts={layouts}

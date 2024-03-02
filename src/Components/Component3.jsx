@@ -9,20 +9,29 @@ import Loader from "../Loader/Loader";
 import DialogBox from "./DialogBox";
 
 const Component3 = () => {
+  // Get component 3 data
+
   const { data, isLoading, isError, error } = useGetcomponent3DataQuery();
   const { component3 = [] } = data || [];
 
+  // Create component 2 data
   const [addData, { isSuccess }] = useCreateComponent3DataMutation();
 
+  // Get api Hitcount for component 3
   const { data: countData } = useGetcomponent3CountsQuery();
   const { updateData3HitCount = 0, createData3HitCount = 0 } = countData || {};
 
+  // States
+
   const [componentData, setComponentData] = useState("");
   const [open, setOpen] = useState(false);
+
+  // Update dialog open/close function
   const submitReviewToggle = () => {
     open ? setOpen(false) : setOpen(true);
   };
 
+  // Save data function
   const addDataButton = (e) => {
     e.preventDefault();
     if (componentData.trim() === "") {
@@ -37,6 +46,7 @@ const Component3 = () => {
     setComponentData("");
   };
 
+  // Use effects for toast
   useEffect(() => {
     if (isError) {
       toast.error(error?.data?.message);
@@ -46,6 +56,7 @@ const Component3 = () => {
     }
   }, [error?.data?.message, isError, isSuccess]);
 
+  // Loader component
   if (isLoading) return <Loader />;
   return (
     <>

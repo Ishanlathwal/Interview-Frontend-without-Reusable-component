@@ -9,19 +9,29 @@ import Loader from "../Loader/Loader";
 import DialogBox from "./DialogBox";
 
 const Component2 = () => {
+  // Get component 2 data
+
   const { data, isLoading, isError, error } = useGetcomponent2DataQuery();
   const { component2 = [] } = data || [];
 
+  // Create component 2 data
   const [addData, { isSuccess }] = useCreateComponent2DataMutation();
 
+  // Get api Hitcount for component 2
   const { data: countData } = useGetcomponent2CountsQuery();
   const { updateData2HitCount = 0, createData2HitCount = 0 } = countData || {};
 
+  // States
   const [componentData, setComponentData] = useState("");
   const [open, setOpen] = useState(false);
+
+  // Update dialog open/close function
+
   const submitReviewToggle = () => {
     open ? setOpen(false) : setOpen(true);
   };
+
+  // Save data function
 
   const addDataButton = (e) => {
     e.preventDefault();
@@ -37,6 +47,8 @@ const Component2 = () => {
     setComponentData("");
   };
 
+  // Use effects for toast
+
   useEffect(() => {
     if (isError) {
       toast.error(error?.data?.message);
@@ -45,6 +57,8 @@ const Component2 = () => {
       toast.success("Data added successfully");
     }
   }, [error?.data?.message, isError, isSuccess]);
+
+  // Loader component
 
   if (isLoading) return <Loader />;
   return (

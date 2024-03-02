@@ -9,6 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 // eslint-disable-next-line no-unused-vars
 import { Slide, Zoom, Flip, Bounce } from "react-toastify";
 ReactDOM.createRoot(document.getElementById("root")).render(
+  // Addinh Redux store
   <Provider store={store}>
     <App />
     <ToastContainer transition={Slide} />

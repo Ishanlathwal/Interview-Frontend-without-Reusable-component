@@ -17,7 +17,7 @@ function App() {
       breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }}
       cols={{ lg: 12, md: 12, sm: 6, xs: 4, xxs: 2 }}
       resizeHandles={["s", "w", "e", "n", "sw", "nw", "se", "ne"]}
-      margin={[10, 10]}
+      margin={[15, 20]}
       rowHeight={30}
       isDraggable={false}
       width={1200}>

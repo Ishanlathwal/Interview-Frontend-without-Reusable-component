@@ -5,8 +5,9 @@
   display: flex;
   justify-content: center; /* Center horizontally */
   align-items: center; /* Center vertically */
-  overflow-wrap: break-word;
   text-align: center;
+  overflow: hidden;
+  z-index: 100;
 }
 .content {
   margin-left: 10px;

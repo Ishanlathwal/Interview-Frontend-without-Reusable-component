@@ -14,7 +14,7 @@ const Component3 = () => {
   const { data, isLoading, isError, error } = useGetcomponent3DataQuery();
   const { component3 = [] } = data || [];
 
-  // Create component 2 data
+  // Create component 3 data
   const [addData, { isSuccess }] = useCreateComponent3DataMutation();
 
   // Get api Hitcount for component 3
